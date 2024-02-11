@@ -1,0 +1,9 @@
+/* HighlightOnHover.css */
+.textHighlight {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.textHighlight:hover {
+  background-color: yellow;
+}

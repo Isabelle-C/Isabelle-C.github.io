@@ -9,7 +9,7 @@ const Home = () => (
           <li><Link to="/">Home</Link></li>
           <li><Link to="/projects">Projects</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/recipe">About</Link></li>
+          <li><Link to="/recipe">Recipe </Link></li>
           {/* Add more links as needed */}
         </ul>
       </nav>

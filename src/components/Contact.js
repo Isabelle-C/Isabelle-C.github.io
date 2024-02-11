@@ -14,6 +14,8 @@ const Contact = () => (
       <FontAwesomeIcon icon={faLinkedin} size="2x" />
     </a>
 
+    <p> isabelle-chen-2023 </p>
+
     <br />
 
     <a
@@ -24,6 +26,8 @@ const Contact = () => (
       <FontAwesomeIcon icon={faMedium} size="2x" />
     </a>
 
+    <p> guo.isabelle.chen </p>
+
     <br />
 
     <a
@@ -33,6 +37,9 @@ const Contact = () => (
     >
       <FontAwesomeIcon icon="fa-brands fa-github" size="2x" />
     </a>
+
+    <p> Isabelle-C </p>
+    
   </div>
 );
 
