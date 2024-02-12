@@ -10,6 +10,7 @@ const Home = () => (
           <li><Link to="/projects">Projects</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           <li><Link to="/recipe">Recipe </Link></li>
+          <li><Link to="/compare">Compare</Link></li>
           {/* Add more links as needed */}
         </ul>
       </nav>
