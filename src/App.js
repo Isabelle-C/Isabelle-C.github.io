@@ -5,6 +5,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Recipe from "./components/Recipe";
 import Compare from "./components/Compare";
+import GMTvis from "./components/GmtVis";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/recipe" element={<Recipe />} />
         <Route path="/compare" element={<Compare />} />
+        <Route path="/gmtvis" element={<GMTvis />} />
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );

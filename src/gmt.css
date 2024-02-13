@@ -1,0 +1,22 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ccc;
+}
+
+th.pathwayName, td.pathwayName {
+    width: 30%; /* Adjust this value as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
+
+th.genes, td.genes {
+    width: 70%; /* Adjust this value as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
