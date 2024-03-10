@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../gmt.css";
+import "../css/gmt.css";
 
 function GMTvis() {
   const [files, setFiles] = useState([]);
