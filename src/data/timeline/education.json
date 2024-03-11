@@ -1,0 +1,24 @@
+{
+    
+"high_school":{
+      "title": "The Ethel Walker School",
+      "subtitle": "Simsbury, CT",
+      "date": "2016-2019"
+    },
+
+    
+    "undergrad":{
+        "title": "Northwestern University",
+        "subtitle": "Evanston, IL",
+        "description": "B.S. Integrated Engineering Studies\n2019-2023"
+        }
+    
+
+    ,
+    "phd":{
+        "title": "Rockefeller University",
+        "subtitle": "New York, NY",
+        "description": "2024-?"
+    }
+    
+}
