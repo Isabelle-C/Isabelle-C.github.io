@@ -28,7 +28,7 @@ jobs:
       run: npm install
     
     - name: Run Prettier to format code
-      run: npx prettier --write .
+      run: npx prettier --write './src/**/*' './*.js'
     
     - name: Commit changes
       run: |
