@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "./dropdown_profile";
+import Dropdown from "../../components/dropdown_profile";
 
 const Projects = () => {
   return (

@@ -1,5 +1,5 @@
-import logo from "../img/guo.svg";
-import "../App.css";
+import logo from "../../data/img/guo.svg";
+import "../../App.css";
 import React, { useState } from "react";
 
 function Compare() {
