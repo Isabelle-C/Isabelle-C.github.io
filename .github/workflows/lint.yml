@@ -21,10 +21,10 @@ jobs:
     - name: Run Prettier to format code
       run: npx prettier --write .
     
-    - name: Commit and push changes
+    - name: Commit changes
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add -A
-        git commit -m "Automate code formatting" --allow-empty
-        git push
+        git diff-index --quiet HEAD || git commit -m "Apply formatting changes"
+        git -c http.extraheader="AUTHORIZATION: bearer ${{ secrets.WORKFLOW }}" push
