@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/main/Home";
-import Projects from "./pages/main/Projects";
-import Contact from "./pages/main/Contact";
-import Recipe from "./pages/mini_projects/Recipe";
-import Compare from "./pages/mini_projects/Compare";
-import GMTvis from "./pages/mini_projects/GmtVis";
+
+import Home from "@pages/main/Home";
+import Projects from "@pages/main/Projects";
+import Contact from "@pages/main/Contact";
+import Recipe from "@pages/mini_projects/Recipe";
+import Compare from "@pages/mini_projects/Compare";
+import GMTvis from "@pages/mini_projects/GmtVis";
+
 import "./App.css";
 
 function App() {
