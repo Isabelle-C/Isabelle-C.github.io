@@ -49,8 +49,6 @@ const Contact = () => (
     >
       <FontAwesomeIcon icon="fa-brands fa-google-scholar" size="2x" />
     </a>
-    
-    
   </div>
 );
 

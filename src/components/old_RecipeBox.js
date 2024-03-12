@@ -5,7 +5,7 @@ import "../HighlightOnHover.css"; // Make sure the path matches where your CSS f
 
 function RecipeBox({ onAddRecipe }) {
   // Add unit conversion logic here
-  
+
   const [recipe, setRecipe] = useState(() => {
     // Get the recipe from localStorage when the component mounts
     const savedRecipe = localStorage.getItem("recipe");
@@ -16,7 +16,6 @@ function RecipeBox({ onAddRecipe }) {
     }
   });
   const [showForm, setShowForm] = useState(true); // New state variable for showing the form
-
 
   // Dummy function for demonstration
   // In a real scenario, you'd parse the text and dynamically generate these components

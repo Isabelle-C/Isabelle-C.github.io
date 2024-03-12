@@ -1,4 +1,3 @@
-
 import React from "react";
 import education_data from "../data/timeline/education.json";
 import work_data from "../data/timeline/work.json";

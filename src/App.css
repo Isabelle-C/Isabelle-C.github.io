@@ -1,5 +1,5 @@
-body{
-  font-family: 'Avenir', sans-serif;
+body {
+  font-family: "Avenir", sans-serif;
 }
 
 header {
@@ -26,7 +26,6 @@ header a {
 h1 {
   margin: 0 50px;
 }
-
 
 .App {
   text-align: left;

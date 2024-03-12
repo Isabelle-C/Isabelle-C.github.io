@@ -15,7 +15,6 @@ const Projects = () => {
         <Dropdown />
       </div>
     </div>
-    
   );
 };
 

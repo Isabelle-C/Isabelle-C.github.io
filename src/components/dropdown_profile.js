@@ -7,7 +7,6 @@ import Header from "./Header";
 import "../css/drop_down.css";
 
 const Dropdown = () => {
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => setIsOpen(!isOpen);

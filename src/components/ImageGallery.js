@@ -31,7 +31,7 @@ function ImageGallery() {
   // Function to handle previous button click
   const handlePrevClick = () => {
     setCurrentImage((prevImage) =>
-      prevImage === 0 ? images.length - 1 : prevImage - 1
+      prevImage === 0 ? images.length - 1 : prevImage - 1,
     );
   };
 

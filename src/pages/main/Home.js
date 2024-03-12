@@ -1,8 +1,7 @@
 import React from "react";
-import Header from '../../components/Header'; // Import Header
+import Header from "../../components/Header"; // Import Header
 
 import Timeline from "../../components/Timeline";
-
 
 const Home = () => (
   <div>
@@ -16,7 +15,6 @@ const Home = () => (
 
     <h1>Timeline</h1>
     <Timeline />
-
   </div>
 );
 

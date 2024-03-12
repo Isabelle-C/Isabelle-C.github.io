@@ -22,7 +22,7 @@ function GMTvis() {
             resolve(reader.result);
           };
           reader.readAsText(file);
-        })
+        }),
       );
     });
 
@@ -30,7 +30,7 @@ function GMTvis() {
 
     Promise.all(readers).then((contents) => {
       const allFilesContent = contents.map((content) =>
-        content.split("\n").map((line) => line.split("\t"))
+        content.split("\n").map((line) => line.split("\t")),
       );
       setFiles(allFilesContent);
     });
@@ -44,7 +44,7 @@ function GMTvis() {
       file.forEach((pathway) => {
         // Check if pathway matches any of the search terms
         const match = searchTerms.some((term) =>
-          pathway[0].toLowerCase().includes(term.toLowerCase())
+          pathway[0].toLowerCase().includes(term.toLowerCase()),
         );
         if (match) {
           searchResults.push([fileNames[fileIndex], ...pathway]);
@@ -73,8 +73,8 @@ function GMTvis() {
                 .map((textPart, index, array) =>
                   index % 2 === 1
                     ? { text: textPart, highlight: true }
-                    : { text: textPart, highlight: false }
-                )
+                    : { text: textPart, highlight: false },
+                ),
         );
       }
     });
@@ -114,14 +114,18 @@ function GMTvis() {
               <tr key={index}>
                 <td>{result[0]}</td>
                 <td>
-                  {highlightSearchTerm(result[1], searchTerms).map((part, index) => (
-                    <span
-                      key={index}
-                      style={part.highlight ? { backgroundColor: 'yellow' } : {}}
-                    >
-                      {part.text}
-                    </span>
-                  ))}
+                  {highlightSearchTerm(result[1], searchTerms).map(
+                    (part, index) => (
+                      <span
+                        key={index}
+                        style={
+                          part.highlight ? { backgroundColor: "yellow" } : {}
+                        }
+                      >
+                        {part.text}
+                      </span>
+                    ),
+                  )}
                 </td>
                 <td>{result.slice(2).join(", ")}</td>
               </tr>

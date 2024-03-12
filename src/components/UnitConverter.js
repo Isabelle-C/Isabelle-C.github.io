@@ -24,7 +24,7 @@ function UnitConverter() {
   // Toggles the unit system between metric and imperial
   const toggleUnitSystem = () => {
     setUnitSystem((prevSystem) =>
-      prevSystem === "metric" ? "imperial" : "metric"
+      prevSystem === "metric" ? "imperial" : "metric",
     );
     setConvertedValue(""); // Reset converted value
   };
