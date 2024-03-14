@@ -40,7 +40,7 @@ const ImageUploadWithMask = () => {
   const [fileName, setFileName] = useState("");
   const [imageScale, setImageScale] = useState(1);
 
-  
+  const [cropBoxColor, setCropBoxColor] = useState("rgba(255,255,255,0.5)");
 
   useEffect(() => {
     // Check if the rectRef is available to update
@@ -182,16 +182,72 @@ const ImageUploadWithMask = () => {
             y={20}
             width={cropBoxWidth}
             height={cropBoxHeight}
-            fill="rgba(255,255,255,0.5)"
+            fill={cropBoxColor}
             draggable
             onClick={() => selectShape("box")}
             onTransformEnd={() => {
-              // Updates crop box dimensions after transform
+              // Update the width and height when the transformation ends
               const node = rectRef.current;
-              setCropBoxWidth(node.width() * node.scaleX());
-              setCropBoxHeight(node.height() * node.scaleY());
+              const scaleX = node.scaleX();
+              const scaleY = node.scaleY();
+
+              const newX = node.x();
+              const newY = node.y();
+
+              // Set the scale back to 1
               node.scaleX(1);
               node.scaleY(1);
+
+              const newWidth = node.width() * scaleX;
+              const newHeight = node.height() * scaleY;
+
+              setCropBoxWidth(newWidth);
+              setCropBoxHeight(newHeight);
+
+              // Calculate the scaled dimensions of the image
+              const scaledImageWidth = image.naturalWidth * imageScale;
+              const scaledImageHeight = image.naturalHeight * imageScale;
+
+              // Check if the crop box's boundaries exceed the image's boundaries
+              if (
+                node.x() < 0 ||
+                node.y() < 0 ||
+                node.x() + newWidth > scaledImageWidth ||
+                node.y() + newHeight > scaledImageHeight ||
+                newX + newWidth < 0 ||
+                newY + newHeight < 0 ||
+                newX > scaledImageWidth ||
+                newY > scaledImageHeight
+              ) {
+                setCropBoxColor("rgba(255,0,0,0.5)"); // Red color
+              } else {
+                setCropBoxColor("rgba(255,255,255,0.5)"); // White color
+              }
+            }}
+            onDragEnd={() => {
+              const node = rectRef.current;
+              const newX = node.x();
+              const newY = node.y();
+
+              // Calculate the new width and height of the crop box
+              const newWidth = node.width() * node.scaleX();
+              const newHeight = node.height() * node.scaleY();
+
+              // Calculate the scaled dimensions of the image
+              const scaledImageWidth = image.naturalWidth * imageScale;
+              const scaledImageHeight = image.naturalHeight * imageScale;
+
+              // Check if the crop box's boundaries exceed the image's boundaries
+              if (
+                newX < 0 ||
+                newY < 0 ||
+                newX + newWidth > scaledImageWidth ||
+                newY + newHeight > scaledImageHeight
+              ) {
+                setCropBoxColor("rgba(255,0,0,0.5)"); // Red color
+              } else {
+                setCropBoxColor("rgba(255,255,255,0.5)"); // White color
+              }
             }}
           />
           {selectedId && <Transformer ref={trRef} />}
