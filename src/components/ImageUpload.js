@@ -1,11 +1,13 @@
+// Import necessary hooks and components from React and react-konva
 import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Rect, Transformer } from "react-konva";
 
+/**
+ * Custom hook to load an image by URL.
+ * @param {string} url The URL of the image to load.
+ * @returns {[any, boolean]} An array containing the loaded image and a loading state.
+ */
 const useImage = (url) => {
-  // This function will return an array with two values
-  // The first value is the image object, and the second is a boolean
-  // that indicates whether the image is still loading
-
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,7 +15,7 @@ const useImage = (url) => {
     if (!url) return;
     setIsLoading(true);
     const img = new window.Image();
-    img.crossOrigin = "Anonymous"; // Add this line if you're loading cross-origin images
+    img.crossOrigin = "Anonymous";
     img.src = url;
     img.onload = () => {
       setImage(img);
@@ -24,104 +26,109 @@ const useImage = (url) => {
   return [image, isLoading];
 };
 
+/**
+ * Main component for image upload and manipulation.
+ */
 const ImageUploadWithMask = () => {
-  // This component will allow the user to upload an image and then
-  // draw a rectangle on top of it to define the crop area
-
-  // The uploaded image source
   const [uploadedImageSrc, setUploadedImageSrc] = useState(null);
-  // The image object and loading state
   const [image, isLoading] = useImage(uploadedImageSrc);
-  // The ID of the selected shape
   const [selectedId, selectShape] = useState(null);
-  // The reference to the Rect and Transformer nodes
   const rectRef = useRef();
-  // The reference to the Transformer node
   const trRef = useRef();
+  const [cropBoxWidth, setCropBoxWidth] = useState(200);
+  const [cropBoxHeight, setCropBoxHeight] = useState(200);
+  const [fileName, setFileName] = useState("");
+  const [imageScale, setImageScale] = useState(1);
 
-  // The width and height of the crop box
-  const [cropBoxWidth, setCropBoxWidth] = useState(100);
-  const [cropBoxHeight, setCropBoxHeight] = useState(100);
+  
 
   useEffect(() => {
-    // Force the Transformer to update when the Rect's size changes
-    if (trRef.current) {
-      trRef.current.forceUpdate();
-      // This is a workaround to fix a bug in Konva where the Transformer
-      // doesn't update the size of the bounding box when the target node
-      // is updated.
-      if (selectedId) {
-        trRef.current.nodes([rectRef.current]);
-        trRef.current.getLayer().batchDraw();
-      }
+    // Check if the rectRef is available to update
+    if (rectRef.current) {
+      // Update Konva Rect dimensions
+      rectRef.current.width(cropBoxWidth);
+      rectRef.current.height(cropBoxHeight);
+      rectRef.current.getLayer().batchDraw(); // Redraw layer to apply changes
     }
-  }, [cropBoxWidth, cropBoxHeight, selectedId]);
 
-  // Handle the case where the user uploads a new image
+    // If the Transformer is targeting the updated rectangle, force it to update
+    if (trRef.current) {
+      trRef.current.nodes([rectRef.current]); // Attach Transformer to the rectangle
+      trRef.current.getLayer().batchDraw(); // Redraw layer to apply changes
+    }
+  }, [cropBoxWidth, cropBoxHeight]); // Depend on cropBoxWidth and cropBoxHeight to trigger updates
+
+  // Updates the uploaded image source upon file selection
   const handleImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       const fileReader = new FileReader();
-      fileReader.onloadend = () => {
-        setUploadedImageSrc(fileReader.result);
-      };
+      fileReader.onloadend = () => setUploadedImageSrc(fileReader.result);
       fileReader.readAsDataURL(event.target.files[0]);
+      setFileName(event.target.files[0].name);
     }
   };
 
-  // Handle the case where the user changes the width or height of the crop box
-  const handleWidthChange = (event) => {
-    setCropBoxWidth(event.target.value);
+  // Handlers for crop box dimension changes
+  const handleWidthChange = (e) => {
+    const newWidth = parseFloat(e.target.value);
+    if (!isNaN(newWidth) && newWidth > 0) {
+      // Validate newWidth is a number and greater than 0
+      setCropBoxWidth(newWidth);
+    }
   };
 
-  const handleHeightChange = (event) => {
-    setCropBoxHeight(event.target.value);
+  const handleHeightChange = (e) => {
+    const newHeight = parseFloat(e.target.value);
+    if (!isNaN(newHeight) && newHeight > 0) {
+      // Validate newHeight is a number and greater than 0
+      setCropBoxHeight(newHeight);
+    }
   };
 
-  // The scale of the image
-  const [imageScale, setImageScale] = useState(1);
+  const handleScaleChange = (e) => setImageScale(e.target.value);
 
-  // Handle the case where the user changes the scale of the image
-  const handleScaleChange = (event) => {
-    setImageScale(event.target.value);
-  };
-
-  // Handle the case where the user clicks the "Crop and Save" button
+  // Executes the crop operation
   const handleCrop = () => {
-    if (!image) return; // Make sure the image is loaded
+    if (!image) return;
+    // Calculate crop dimensions based on image and box scales
+    const cropConfig = calculateCropConfig();
+    const croppedImageDataURL = cropImage(image, cropConfig);
+    downloadImage(croppedImageDataURL, fileName);
+  };
 
+  // Calculates the crop configuration
+  const calculateCropConfig = () => {
     const scaleX = (image.width / image.naturalWidth) * imageScale;
     const scaleY = (image.height / image.naturalHeight) * imageScale;
-
-    const cropConfig = {
+    return {
       x: rectRef.current.x() / scaleX,
       y: rectRef.current.y() / scaleY,
       width: (rectRef.current.width() * rectRef.current.scaleX()) / scaleX,
       height: (rectRef.current.height() * rectRef.current.scaleY()) / scaleY,
     };
+  };
 
+  // Performs the actual cropping of the image
+  const cropImage = (image, cropConfig) => {
     const canvas = document.createElement("canvas");
-    // Assuming cropConfig is defined and contains the crop dimensions...
     canvas.width = cropConfig.width;
     canvas.height = cropConfig.height;
     const context = canvas.getContext("2d");
-
     context.drawImage(
       image,
       cropConfig.x,
       cropConfig.y,
       cropConfig.width,
-      cropConfig.height, // Source dimensions
+      cropConfig.height,
       0,
       0,
       cropConfig.width,
-      cropConfig.height, // Destination dimensions
+      cropConfig.height
     );
-
-    const croppedImageDataURL = canvas.toDataURL("image/png");
-    downloadImage(croppedImageDataURL, "cropped-image.png");
+    return canvas.toDataURL("image/png");
   };
 
-  // A function to download the cropped image
+  // Downloads the cropped image
   const downloadImage = (dataUrl, fileName) => {
     const link = document.createElement("a");
     link.download = fileName;
@@ -134,8 +141,9 @@ const ImageUploadWithMask = () => {
   return (
     <div>
       <input type="file" onChange={handleImageChange} accept="image/*" />
+      {/* Input fields for width, height, and scale adjustments */}
       <label>
-        Width:
+        Width:{" "}
         <input
           type="number"
           value={cropBoxWidth}
@@ -143,7 +151,7 @@ const ImageUploadWithMask = () => {
         />
       </label>
       <label>
-        Height:
+        Height:{" "}
         <input
           type="number"
           value={cropBoxHeight}
@@ -151,7 +159,7 @@ const ImageUploadWithMask = () => {
         />
       </label>
       <label>
-        Scale:
+        Scale:{" "}
         <input
           type="range"
           min="0.1"
@@ -161,6 +169,8 @@ const ImageUploadWithMask = () => {
           onChange={handleScaleChange}
         />
       </label>
+      <button onClick={handleCrop}>Crop and Save</button>
+      {/* Konva Stage for image and cropping rectangle */}
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
           {image && (
@@ -176,23 +186,17 @@ const ImageUploadWithMask = () => {
             draggable
             onClick={() => selectShape("box")}
             onTransformEnd={() => {
-              // Update the width and height when the transformation ends
+              // Updates crop box dimensions after transform
               const node = rectRef.current;
-              const scaleX = node.scaleX();
-              const scaleY = node.scaleY();
-
-              // Set the scale back to 1
+              setCropBoxWidth(node.width() * node.scaleX());
+              setCropBoxHeight(node.height() * node.scaleY());
               node.scaleX(1);
               node.scaleY(1);
-
-              setCropBoxWidth(node.width() * scaleX);
-              setCropBoxHeight(node.height() * scaleY);
             }}
           />
           {selectedId && <Transformer ref={trRef} />}
         </Layer>
       </Stage>
-      <button onClick={handleCrop}>Crop and Save</button>
     </div>
   );
 };
