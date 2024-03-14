@@ -75,7 +75,7 @@ const ImageUploadWithMask = () => {
       0,
       0,
       cropConfig.width,
-      cropConfig.height // Destination dimensions
+      cropConfig.height, // Destination dimensions
     );
 
     const croppedImageDataURL = canvas.toDataURL("image/png");
