@@ -61,6 +61,7 @@ const ImageUploadWithMask = () => {
     };
 
     const canvas = document.createElement("canvas");
+    // Assuming cropConfig is defined and contains the crop dimensions...
     canvas.width = cropConfig.width;
     canvas.height = cropConfig.height;
     const context = canvas.getContext("2d");
@@ -70,11 +71,11 @@ const ImageUploadWithMask = () => {
       cropConfig.x,
       cropConfig.y,
       cropConfig.width,
-      cropConfig.height,
+      cropConfig.height, // Source dimensions
       0,
       0,
       cropConfig.width,
-      cropConfig.height
+      cropConfig.height // Destination dimensions
     );
 
     const croppedImageDataURL = canvas.toDataURL("image/png");
