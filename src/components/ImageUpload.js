@@ -123,7 +123,7 @@ const ImageUploadWithMask = () => {
       0,
       0,
       cropConfig.width,
-      cropConfig.height
+      cropConfig.height,
     );
     return canvas.toDataURL("image/png");
   };
