@@ -85,25 +85,25 @@ const ImageUploadWithMask = () => {
     setImageScale(event.target.value);
   };
 
- // Handle the case where the user clicks the "Crop and Save" button
-const handleCrop = () => {
-  if (!image) return; // Make sure the image is loaded
+  // Handle the case where the user clicks the "Crop and Save" button
+  const handleCrop = () => {
+    if (!image) return; // Make sure the image is loaded
 
-  const scaleX = (image.width / image.naturalWidth) * imageScale;
-  const scaleY = (image.height / image.naturalHeight) * imageScale;
+    const scaleX = (image.width / image.naturalWidth) * imageScale;
+    const scaleY = (image.height / image.naturalHeight) * imageScale;
 
-  const cropConfig = {
-    x: rectRef.current.x() / scaleX,
-    y: rectRef.current.y() / scaleY,
-    width: (rectRef.current.width() * rectRef.current.scaleX()) / scaleX,
-    height: (rectRef.current.height() * rectRef.current.scaleY()) / scaleY,
-  };
+    const cropConfig = {
+      x: rectRef.current.x() / scaleX,
+      y: rectRef.current.y() / scaleY,
+      width: (rectRef.current.width() * rectRef.current.scaleX()) / scaleX,
+      height: (rectRef.current.height() * rectRef.current.scaleY()) / scaleY,
+    };
 
-  const canvas = document.createElement("canvas");
-  // Assuming cropConfig is defined and contains the crop dimensions...
-  canvas.width = cropConfig.width;
-  canvas.height = cropConfig.height;
-  const context = canvas.getContext("2d");
+    const canvas = document.createElement("canvas");
+    // Assuming cropConfig is defined and contains the crop dimensions...
+    canvas.width = cropConfig.width;
+    canvas.height = cropConfig.height;
+    const context = canvas.getContext("2d");
 
     context.drawImage(
       image,
@@ -117,9 +117,9 @@ const handleCrop = () => {
       cropConfig.height, // Destination dimensions
     );
 
-  const croppedImageDataURL = canvas.toDataURL("image/png");
-  downloadImage(croppedImageDataURL, "cropped-image.png");
-};
+    const croppedImageDataURL = canvas.toDataURL("image/png");
+    downloadImage(croppedImageDataURL, "cropped-image.png");
+  };
 
   // A function to download the cropped image
   const downloadImage = (dataUrl, fileName) => {
