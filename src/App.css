@@ -2,26 +2,9 @@ body {
   font-family: "Avenir", sans-serif;
 }
 
-header {
-  background-color: #282c34;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-header li {
-  list-style-type: none;
-  margin: 0 10px;
-}
 
-header a {
-  text-decoration: none;
-  color: white;
-}
+
 
 h1 {
   margin: 0 50px;
