@@ -44,65 +44,64 @@ const ImageUploadWithMask = () => {
     }
   };
 
-    const [cropBoxWidth, setCropBoxWidth] = useState(100);
-    const [cropBoxHeight, setCropBoxHeight] = useState(100);
+  const [cropBoxWidth, setCropBoxWidth] = useState(100);
+  const [cropBoxHeight, setCropBoxHeight] = useState(100);
 
-    const handleWidthChange = (event) => {
-      setCropBoxWidth(event.target.value);
-    };
-
-    const handleHeightChange = (event) => {
-      setCropBoxHeight(event.target.value);
-    };
-
-const handleCrop = () => {
-  // Assuming `image` is the loaded Image object from `useImage` hook
-  const cropConfig = {
-    x: rectRef.current.x(),
-    y: rectRef.current.y(),
-    width: rectRef.current.width() * rectRef.current.scaleX(),
-    height: rectRef.current.height() * rectRef.current.scaleY(),
+  const handleWidthChange = (event) => {
+    setCropBoxWidth(event.target.value);
   };
 
-  const canvas = document.createElement("canvas");
-  // Assuming cropConfig is defined and contains the crop dimensions...
-  canvas.width = cropConfig.width;
-  canvas.height = cropConfig.height;
-  const context = canvas.getContext("2d");
+  const handleHeightChange = (event) => {
+    setCropBoxHeight(event.target.value);
+  };
 
-  if (image && image.complete) {
-    context.drawImage(
-      image,
-      cropConfig.x,
-      cropConfig.y,
-      cropConfig.width,
-      cropConfig.height, // Source dimensions
-      0,
-      0,
-      cropConfig.width,
-      cropConfig.height // Destination dimensions
-    );
+  const handleCrop = () => {
+    // Assuming `image` is the loaded Image object from `useImage` hook
+    const cropConfig = {
+      x: rectRef.current.x(),
+      y: rectRef.current.y(),
+      width: rectRef.current.width() * rectRef.current.scaleX(),
+      height: rectRef.current.height() * rectRef.current.scaleY(),
+    };
 
-    // Convert the canvas to a Data URL
-    const croppedImageDataURL = canvas.toDataURL("image/png");
+    const canvas = document.createElement("canvas");
+    // Assuming cropConfig is defined and contains the crop dimensions...
+    canvas.width = cropConfig.width;
+    canvas.height = cropConfig.height;
+    const context = canvas.getContext("2d");
 
-    // Create a temporary link element
-    const downloadLink = document.createElement("a");
-    // Set the download attribute to the desired file name
-    downloadLink.download = "cropped-image.png";
-    // Set the href attribute to the Data URL
-    downloadLink.href = croppedImageDataURL;
-    // Append the link to the document body (required for Firefox)
-    document.body.appendChild(downloadLink);
-    // Programmatically click the link to trigger the download
-    downloadLink.click();
-    // Remove the link after triggering the download
-    document.body.removeChild(downloadLink);
-  } else {
-    console.error("Image not loaded");
-  }
-};
+    if (image && image.complete) {
+      context.drawImage(
+        image,
+        cropConfig.x,
+        cropConfig.y,
+        cropConfig.width,
+        cropConfig.height, // Source dimensions
+        0,
+        0,
+        cropConfig.width,
+        cropConfig.height, // Destination dimensions
+      );
 
+      // Convert the canvas to a Data URL
+      const croppedImageDataURL = canvas.toDataURL("image/png");
+
+      // Create a temporary link element
+      const downloadLink = document.createElement("a");
+      // Set the download attribute to the desired file name
+      downloadLink.download = "cropped-image.png";
+      // Set the href attribute to the Data URL
+      downloadLink.href = croppedImageDataURL;
+      // Append the link to the document body (required for Firefox)
+      document.body.appendChild(downloadLink);
+      // Programmatically click the link to trigger the download
+      downloadLink.click();
+      // Remove the link after triggering the download
+      document.body.removeChild(downloadLink);
+    } else {
+      console.error("Image not loaded");
+    }
+  };
 
   return (
     <div>
@@ -132,7 +131,6 @@ const handleCrop = () => {
             y={20}
             width={cropBoxWidth}
             height={cropBoxHeight}
-            
             fill="rgba(255,255,255,0.5)"
             draggable
             onClick={() => selectShape("box")}
