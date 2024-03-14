@@ -40,8 +40,6 @@ const ImageUploadWithMask = () => {
   const [fileName, setFileName] = useState("");
   const [imageScale, setImageScale] = useState(1);
 
-  
-
   useEffect(() => {
     // Check if the rectRef is available to update
     if (rectRef.current) {
@@ -123,7 +121,7 @@ const ImageUploadWithMask = () => {
       0,
       0,
       cropConfig.width,
-      cropConfig.height
+      cropConfig.height,
     );
     return canvas.toDataURL("image/png");
   };
