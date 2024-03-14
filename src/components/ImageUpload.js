@@ -105,17 +105,17 @@ const handleCrop = () => {
   canvas.height = cropConfig.height;
   const context = canvas.getContext("2d");
 
-  context.drawImage(
-    image,
-    cropConfig.x,
-    cropConfig.y,
-    cropConfig.width,
-    cropConfig.height, // Source dimensions
-    0,
-    0,
-    cropConfig.width,
-    cropConfig.height // Destination dimensions
-  );
+    context.drawImage(
+      image,
+      cropConfig.x,
+      cropConfig.y,
+      cropConfig.width,
+      cropConfig.height, // Source dimensions
+      0,
+      0,
+      cropConfig.width,
+      cropConfig.height, // Destination dimensions
+    );
 
   const croppedImageDataURL = canvas.toDataURL("image/png");
   downloadImage(croppedImageDataURL, "cropped-image.png");
