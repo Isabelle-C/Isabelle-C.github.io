@@ -56,7 +56,12 @@ const ImageUploadWithMask = () => {
       trRef.current.nodes([rectRef.current]); // Attach Transformer to the rectangle
       trRef.current.getLayer().batchDraw(); // Redraw layer to apply changes
     }
-  }, [cropBoxWidth, cropBoxHeight]); // Depend on cropBoxWidth and cropBoxHeight to trigger updates
+
+    if (selectedId) {
+      trRef.current.nodes([rectRef.current]);
+      trRef.current.getLayer().batchDraw();
+    }
+  }, [cropBoxWidth, cropBoxHeight, selectedId]); // Depend on cropBoxWidth and cropBoxHeight to trigger updates
 
   // Updates the uploaded image source upon file selection
   const handleImageChange = (event) => {
@@ -239,10 +244,14 @@ const ImageUploadWithMask = () => {
 
               // Check if the crop box's boundaries exceed the image's boundaries
               if (
-                newX < 0 ||
-                newY < 0 ||
-                newX + newWidth > scaledImageWidth ||
-                newY + newHeight > scaledImageHeight
+                node.x() < 0 ||
+                node.y() < 0 ||
+                node.x() + newWidth > scaledImageWidth ||
+                node.y() + newHeight > scaledImageHeight ||
+                newX + newWidth < 0 ||
+                newY + newHeight < 0 ||
+                newX > scaledImageWidth ||
+                newY > scaledImageHeight
               ) {
                 setCropBoxColor("rgba(255,0,0,0.5)"); // Red color
               } else {
