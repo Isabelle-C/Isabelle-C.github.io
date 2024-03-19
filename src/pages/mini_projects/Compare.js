@@ -2,8 +2,6 @@ import logo from "../../data/img/guo.svg";
 import "../../App.css";
 import React, { useState } from "react";
 
-
-
 function Compare() {
   const [string1, setString1] = useState("");
   const [string2, setString2] = useState("");
@@ -66,7 +64,6 @@ function Compare() {
           Generated URL: <a href={githubURL}>{githubURL}</a>
         </p>
       )}
-      
     </div>
   );
 }
