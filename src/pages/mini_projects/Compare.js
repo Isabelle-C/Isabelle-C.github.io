@@ -2,7 +2,7 @@ import logo from "../../data/img/guo.svg";
 import "../../App.css";
 import React, { useState } from "react";
 
-import ImageUploadWithMask from "../../components/ImageUpload";
+
 
 function Compare() {
   const [string1, setString1] = useState("");
@@ -66,7 +66,7 @@ function Compare() {
           Generated URL: <a href={githubURL}>{githubURL}</a>
         </p>
       )}
-      <ImageUploadWithMask />
+      
     </div>
   );
 }

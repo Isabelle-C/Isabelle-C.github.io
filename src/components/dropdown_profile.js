@@ -32,7 +32,11 @@ const Dropdown = () => {
         <div>
           <Link to="/gmtvis">GMT Vis</Link>
           <br />
+          <br />
           <Link to="/compare">GitHub Commmits compare generator</Link>
+          <br />
+          <br />
+          <Link to="/imagecropper">Image Cropper</Link>
         </div>
       )}
     </div>

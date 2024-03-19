@@ -115,20 +115,22 @@ const ImageUploadWithMask = () => {
 
   // Performs the actual cropping of the image
   const cropImage = (image, cropConfig) => {
+    const scaleX = (image.width / image.naturalWidth) * imageScale;
+    const scaleY = (image.height / image.naturalHeight) * imageScale;
     const canvas = document.createElement("canvas");
-    canvas.width = cropConfig.width;
-    canvas.height = cropConfig.height;
+    canvas.width = cropConfig.width * scaleX;
+    canvas.height = cropConfig.height * scaleY;
     const context = canvas.getContext("2d");
     context.drawImage(
       image,
-      cropConfig.x,
-      cropConfig.y,
-      cropConfig.width,
-      cropConfig.height,
+      cropConfig.x, //the x-coordinate where to start clipping the original image
+      cropConfig.y, //the y-coordinate where to start clipping the original image
+      cropConfig.width, //the width of the clipped image
+      cropConfig.height, //the height of the clipped image
       0,
       0,
-      cropConfig.width,
-      cropConfig.height,
+      cropConfig.width * scaleX, // the width of the image to use in the destination canvas
+      cropConfig.height * scaleY // the height of the image to use in the destination canvas
     );
     return canvas.toDataURL("image/png");
   };
