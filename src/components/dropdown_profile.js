@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import Header from "./Header";
-
-import "../css/drop_down.css";
+import "@css/drop_down.css";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +35,9 @@ const Dropdown = () => {
           <br />
           <br />
           <Link to="/imagecropper">Image Cropper</Link>
+          <br />
+          <br />
+          <Link to="/imagecolor">Image Color</Link>
         </div>
       )}
     </div>

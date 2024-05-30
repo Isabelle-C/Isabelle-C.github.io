@@ -1,0 +1,15 @@
+a {
+    margin-left: 50px;
+}
+
+p {
+    margin-left: 50px;
+}
+
+.protrait {
+  height: 20vmin;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+}

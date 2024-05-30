@@ -1,19 +1,16 @@
 import React from "react";
 import Header from "@components/Header"; // Import Header
+import Timeline from "@components/Timeline";
 
-
-import "@css/Home.css";
-
-const Home = () => (
+const About = () => (
   <div>
     <div>
       <Header /> {/* Use Header */}
       {/* Rest of your Home component */}
     </div>
 
-    <p> Personal page building still in progress...:)</p>
-    {/* Add your bio here */}
+    <Timeline />
   </div>
 );
 
-export default Home;
+export default About;

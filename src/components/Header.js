@@ -16,10 +16,13 @@ const Header = () => (
         <li>
           <Link to="/contact">Contact</Link>
         </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
         {/* Add more links as needed */}
       </ul>
     </nav>
+
   </header>
 );
-
 export default Header;
