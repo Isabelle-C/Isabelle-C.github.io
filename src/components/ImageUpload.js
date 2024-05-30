@@ -130,7 +130,7 @@ const ImageUploadWithMask = () => {
       0,
       0,
       cropConfig.width * scaleX, // the width of the image to use in the destination canvas
-      cropConfig.height * scaleY // the height of the image to use in the destination canvas
+      cropConfig.height * scaleY, // the height of the image to use in the destination canvas
     );
     return canvas.toDataURL("image/png");
   };
