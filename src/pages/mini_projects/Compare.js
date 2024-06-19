@@ -1,5 +1,3 @@
-import logo from "../../data/img/guo.svg";
-import "../../App.css";
 import React, { useState } from "react";
 
 function Compare() {
@@ -18,7 +16,7 @@ function Compare() {
 
   return (
     <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
+
 
       <h1>Generate GitHub Compare URL</h1>
 

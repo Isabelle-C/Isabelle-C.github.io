@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import "@css/drop_down.css";
+import "@css/mini_project.css";
 
-const Dropdown = () => {
+const MiniProject = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => setIsOpen(!isOpen);
@@ -37,11 +37,10 @@ const Dropdown = () => {
           <Link to="/imagecropper">Image Cropper</Link>
           <br />
           <br />
-          <Link to="/imagecolor">Image Color</Link>
         </div>
       )}
     </div>
   );
 };
 
-export default Dropdown;
+export default MiniProject;

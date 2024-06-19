@@ -1,0 +1,66 @@
+.experience-section {
+  padding: 20px;
+  background-color: var(--background-color2); /* Dark background color */
+  color: var(--text-color); /* Text color */
+}
+
+.experience-card {
+  background-color: var(--background-color); /* Card background color */
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.experience-card h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.experience-card h4 {
+  margin: 5px 0;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.experience-card p {
+  margin: 5px 0;
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  align-items: center; /* Keeps items vertically centered */
+  justify-content: start; /* Align items to the start of the container */
+  gap: 30px; /* Adjust the gap as needed */
+}
+
+.portrait {
+  width: 15%;
+  height: auto;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+}
+
+.text-block h1 {
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Ensure no padding is affecting alignment */
+}
+
+.links-container {
+  display: flex;
+  justify-content: flex-start; /* Align links to the start */
+  gap: 5px; /* Adjust the space between links */
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Ensure no padding is affecting alignment */
+}
