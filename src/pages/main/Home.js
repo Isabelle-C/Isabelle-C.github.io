@@ -24,7 +24,6 @@ const Home = () => {
   return (
     <div>
       <Header /> {/* Use Header */}
-
       <div class="container">
         <img src={logo} class="portrait" alt="logo" />
 
