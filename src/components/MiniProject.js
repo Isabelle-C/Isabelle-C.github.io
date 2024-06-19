@@ -28,13 +28,21 @@ const MiniProject = () => {
       </button>
       {isOpen && (
         <div>
-          <Link className="link" to="/gmtvis">GMT Vis</Link>
+          <Link className="link" to="/gmtvis">
+            GMT Vis
+          </Link>
           <br />
-          <Link className="link" to="/compare">GitHub Commits compare generator</Link>
+          <Link className="link" to="/compare">
+            GitHub Commits compare generator
+          </Link>
           <br />
-          <Link className="link" to="/imagecropper">Image Cropper</Link>
+          <Link className="link" to="/imagecropper">
+            Image Cropper
+          </Link>
           <br />
-          <Link className="link" to="/imagecolor">Image Color (in progress)</Link>
+          <Link className="link" to="/imagecolor">
+            Image Color (in progress)
+          </Link>
         </div>
       )}
     </div>

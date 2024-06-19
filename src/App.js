@@ -12,22 +12,22 @@ import ImageColor from "@pages/mini_projects/ImageColor(unfinished)";
 import "@css/styles.css";
 
 function App() {
-React.useEffect(() => {
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  const handleChange = () => {
-    const newTheme = mediaQuery.matches ? 'dark-theme' : 'light-theme';
-    document.body.className = newTheme;
-  };
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      const newTheme = mediaQuery.matches ? "dark-theme" : "light-theme";
+      document.body.className = newTheme;
+    };
 
-  // Set initial theme
-  handleChange();
+    // Set initial theme
+    handleChange();
 
-  // Listen for changes
-  mediaQuery.addListener(handleChange);
+    // Listen for changes
+    mediaQuery.addListener(handleChange);
 
-  // Cleanup function to remove the event listener
-  return () => mediaQuery.removeListener(handleChange);
-}, []);
+    // Cleanup function to remove the event listener
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
 
   return (
     <Router>
