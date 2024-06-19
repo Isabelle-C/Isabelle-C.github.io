@@ -37,6 +37,7 @@ const MiniProject = () => {
           <Link to="/imagecropper">Image Cropper</Link>
           <br />
           <br />
+          <Link to="/imagecolor">Image Color (in progress)</Link>
         </div>
       )}
     </div>

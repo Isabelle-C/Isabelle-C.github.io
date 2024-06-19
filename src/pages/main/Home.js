@@ -18,18 +18,19 @@ import useSystemTheme from "@components/useSystemTheme";
 import "@css/styles.css";
 import "@css/home.css";
 
-import logo from "@data/img/m.svg";
+import logo from "@data/img/protrait.svg";
 
 const Home = () => {
   return (
     <div>
       <Header /> {/* Use Header */}
+
       <div class="container">
         <img src={logo} class="portrait" alt="logo" />
 
         <div class="text-block">
           <h1>Isabelle Chen</h1>
-          <p>
+          <p class="intro">
             {" "}
             First-year PhD student at Rockefeller. I am interested in the
             intersection of AI and biology.

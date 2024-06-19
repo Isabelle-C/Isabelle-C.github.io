@@ -34,6 +34,8 @@
   align-items: center; /* Keeps items vertically centered */
   justify-content: start; /* Align items to the start of the container */
   gap: 30px; /* Adjust the gap as needed */
+  margin-top: 25px;
+  margin-bottom: 5px;
 }
 
 .portrait {
@@ -62,4 +64,8 @@
   gap: 5px; /* Adjust the space between links */
   margin: 0; /* Reset default margin */
   padding: 0; /* Ensure no padding is affecting alignment */
+}
+
+.intro {
+  font-size: 25px
 }

@@ -7,6 +7,7 @@ import Projects from "@pages/main/Projects";
 import Compare from "@pages/mini_projects/Compare";
 import GMTvis from "@pages/mini_projects/GmtVis";
 import ImageCropper from "@pages/mini_projects/ImageCropper";
+import ImageColor from "@pages/mini_projects/ImageColor(unfinished)";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/compare" element={<Compare />} />
         <Route path="/gmtvis" element={<GMTvis />} />
         <Route path="/imagecropper" element={<ImageCropper />} />
-
+        <Route path="/imagecolor" element={<ImageColor />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
