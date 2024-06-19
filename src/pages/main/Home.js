@@ -7,7 +7,7 @@ import {
   faGoogleScholar,
 } from "@fortawesome/free-brands-svg-icons";
 
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faFileAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "@components/Header";
 import ExperienceSection from "@components/CardExperience";
@@ -77,6 +77,16 @@ const Home = () => {
             >
               <FontAwesomeIcon icon={faEnvelope} size="2x" />
             </a>
+
+            <a
+              href="URL_TO_YOUR_CV"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--text-color)" }}
+            >
+              <FontAwesomeIcon icon={faFileAlt} size="2x" />
+            </a>
+            
           </div>
         </div>
       </div>
