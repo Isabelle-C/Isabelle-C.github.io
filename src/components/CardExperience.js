@@ -1,6 +1,6 @@
 import React from "react";
 
-import "@css/home.css";
+import "@css/Home.css";
 
 const ExperienceCard = ({ title, company, date, location }) => {
   return (

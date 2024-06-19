@@ -15,3 +15,13 @@
     --text-color: #ffffff;
   }
 }
+
+
+/* Assuming @css/styles.css */
+.dark-theme {
+  background-color: #434545; /* Dark background color */
+}
+
+.light-theme {
+  background-color: #ffffff; /* Light background color */
+}

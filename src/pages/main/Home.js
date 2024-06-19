@@ -16,7 +16,7 @@ import EducationSection from "@components/CardEducation";
 import useSystemTheme from "@components/useSystemTheme";
 
 import "@css/styles.css";
-import "@css/home.css";
+import "@css/Home.css";
 
 import logo from "@data/img/protrait.svg";
 

@@ -5,7 +5,6 @@ header {
   flex-direction: column; /* Change this */
   align-items: left;
   justify-content: flex-start;
-  font-size: calc(5px + 2vmin);
   color: var(--text-color);
 }
 
