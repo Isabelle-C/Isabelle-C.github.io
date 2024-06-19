@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 const useSystemTheme = () => {
   const [theme, setTheme] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light",
   );
 
   useEffect(() => {

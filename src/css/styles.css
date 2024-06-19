@@ -1,17 +1,17 @@
 :root {
-    /* Light theme defaults */
-    --background-color: rgba(255, 248, 228, 0.9);
-    --background-color2: rgba(200, 190, 170, 0.9);
-    --background-shadow: rgba(150, 140, 120, 0.6);
-    --text-color: #333333;
+  /* Light theme defaults */
+  --background-color: rgba(255, 248, 228, 0.9);
+  --background-color2: rgba(200, 190, 170, 0.9);
+  --background-shadow: rgba(150, 140, 120, 0.6);
+  --text-color: #333333;
 }
 
 /* Dark theme based on system preference */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #333333;
-        --background-color2: #818181;
-        --background-shadow: rgb(216, 216, 216);
-        --text-color: #ffffff;
-    }
+  :root {
+    --background-color: #333333;
+    --background-color2: #818181;
+    --background-shadow: rgb(216, 216, 216);
+    --text-color: #ffffff;
+  }
 }

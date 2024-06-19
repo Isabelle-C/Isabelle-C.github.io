@@ -16,8 +16,6 @@ function Compare() {
 
   return (
     <div className="App">
-
-
       <h1>Generate GitHub Compare URL</h1>
 
       <input

@@ -16,7 +16,6 @@ const Header = () => (
         {/* Add more links as needed */}
       </ul>
     </nav>
-
   </header>
 );
 export default Header;

@@ -13,7 +13,6 @@ const ExperienceCard = ({ title, school, date, location }) => {
   );
 };
 
-
 const EducationSection = () => {
   const experiences = [
     {
@@ -41,4 +40,3 @@ const EducationSection = () => {
 };
 
 export default EducationSection;
-

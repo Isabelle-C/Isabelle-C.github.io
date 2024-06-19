@@ -14,7 +14,7 @@ const rgbToHex = (rgb) => {
 };
 
 const ColorApp = () => {
-  const[selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   const handleColorPick = (color) => {
     console.log("Selected color:", color); // Selected color: rgb(101, 42, 65)
