@@ -86,7 +86,6 @@ const Home = () => {
             >
               <FontAwesomeIcon icon={faFileAlt} size="2x" />
             </a>
-            
           </div>
         </div>
       </div>
