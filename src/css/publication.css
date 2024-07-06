@@ -1,16 +1,16 @@
 .company-name {
-    font-size: 20px; /* Larger font size for company name */
-    font-weight: bold; /* Make the company name bold */
-    margin-bottom: 5px; /* Add some space below the company name */
+  font-size: 20px; /* Larger font size for company name */
+  font-weight: bold; /* Make the company name bold */
+  margin-bottom: 5px; /* Add some space below the company name */
 }
 
 .experience-date {
-    font-size: 16px; /* Slightly smaller font size for date */
-    color: #666; /* Grey color for the date */
-    margin-bottom: 2px; /* Reduce space below the date */
+  font-size: 16px; /* Slightly smaller font size for date */
+  color: #666; /* Grey color for the date */
+  margin-bottom: 2px; /* Reduce space below the date */
 }
 
 .experience-location {
-    font-size: 16px; /* Consistent font size with date */
-    color: #666; /* Same grey color for location */
+  font-size: 16px; /* Consistent font size with date */
+  color: #666; /* Same grey color for location */
 }

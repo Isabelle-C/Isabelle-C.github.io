@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Header from "@components/Header";
 
 import ReactMarkdown from "react-markdown";
@@ -16,10 +16,10 @@ const Image = ({ alt, src }) => {
 
 const Blog = () => {
   const [markdownFiles, setMarkdownFiles] = useState([
-    { name: 'Markdown File 1', path: '/blogs/test.md' },
+    { name: "Markdown File 1", path: "/blogs/test.md" },
     // Add more files as needed
   ]);
-  const [selectedMarkdown, setSelectedMarkdown] = useState('');
+  const [selectedMarkdown, setSelectedMarkdown] = useState("");
   const [isVisible, setIsVisible] = useState(false); // Step 1: Initialize visibility state
 
   useEffect(() => {
@@ -28,12 +28,12 @@ const Blog = () => {
 
   const fetchMarkdownFile = (filePath) => {
     fetch(filePath)
-      .then(response => response.text())
-      .then(text => {
+      .then((response) => response.text())
+      .then((text) => {
         setSelectedMarkdown(text);
         setIsVisible(true); // Step 2: Update visibility state on button click
       })
-      .catch(error => console.error('Error fetching markdown file:', error));
+      .catch((error) => console.error("Error fetching markdown file:", error));
   };
 
   return (
