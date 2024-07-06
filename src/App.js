@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "@pages/main/Home";
 import Projects from "@pages/main/Projects";
+import Blog from "@pages/main/Blog";
 
 import Compare from "@pages/mini_projects/Compare";
 import GMTvis from "@pages/mini_projects/GmtVis";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/gmtvis" element={<GMTvis />} />
         <Route path="/imagecropper" element={<ImageCropper />} />
         <Route path="/imagecolor" element={<ImageColor />} />
+        <Route path="/blogs" element={<Blog />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

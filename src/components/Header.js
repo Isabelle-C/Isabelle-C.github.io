@@ -13,6 +13,9 @@ const Header = () => (
         <li>
           <Link to="/projects">Projects</Link>
         </li>
+        <li>
+          <Link to="/blogs">Blogs</Link>
+        </li>
         {/* Add more links as needed */}
       </ul>
     </nav>
