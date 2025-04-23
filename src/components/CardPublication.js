@@ -7,9 +7,9 @@ const PublicationCard = ({ title, company, date, location }) => {
   return (
     <div className="experience-card">
       <h3>{title}</h3>
-      <h4 class="company-name">{company}</h4>
-      <p class="experience-date">{date}</p>
-      <p class="experience-location">{location}</p>
+      <h4 className="company-name">{company}</h4>
+      <p className="experience-date">{date}</p>
+      <p className="experience-location">{location}</p>
     </div>
   );
 };

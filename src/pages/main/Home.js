@@ -24,12 +24,12 @@ const Home = () => {
   return (
     <div>
       <Header /> {/* Use Header */}
-      <div class="container">
-        <img src={logo} class="portrait" alt="logo" />
+      <div className="container">
+        <img src={logo} className="portrait" alt="logo" />
 
-        <div class="text-block">
+        <div className="text-block">
           <h1>Isabelle Chen</h1>
-          <p class="intro">
+          <p className="intro">
             {" "}
             First-year PhD student at Rockefeller. I am interested in the
             intersection of AI and biology.
